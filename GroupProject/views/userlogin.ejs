@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="crypto-js.js"></script>
+    <script>
+      function checkUser(event) {
+      username = document.getElementById("username").value;
+      if (username == "") {
+        document.getElementById("message").innerHTML = "Please enter a username";
+        event.preventDefault();
+      }
+      password = document.getElementById("password").value;
+      username = document.getElementById("username").value;
+      salt = document.getElementById("salt").value;
+
+      // Put the hashedPassword in the DOM so it can be POSTed
+      var hashedPassword = CryptoJS.SHA256(password + ":" + salt).toString(CryptoJS.enc.Hex);
+
+      document.getElementById("hashedPassword").value = hashedPassword;
+
+      // POST will occur now, the server will check the credentials afterward.
+    }  
+    </script>
+    <style>
+
+      body {
+        margin: 0; 
+        margin-left: 400px;
+        margin-right: -400px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background: 
+          linear-gradient(to top, #ffffff, rgba(0,0,0,0)),
+          url('https://wallpapers.com/images/featured/sky-mvehfqz6w2ges2dj.jpg'); 
+        
+        height: 100vh;
+        padding: 0px; 
+      }
+      
+      header {
+        position: absolute;
+        padding: 20px;  
+        width: 1000px;
+        margin-top: 10px;
+        border-style: outset;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #3268ccb9; 
+        background-color: #3975e4b9; 
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .sidebar {
+        position: absolute; 
+        height: 100%; 
+        width: 250px; 
+        justify-content: center; 
+        align-items: center; 
+        color: white;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); 
+        margin-top: 150px;
+      }
+
+      .content {
+        position: absolute;
+        justify-content: right; 
+        align-items: center; 
+        margin-top: 150px;
+        margin-left: 300px;
+        backdrop-filter: blur(5px);
+        background-color: rgba(26, 26, 26, 0.877); 
+        padding: 20px;
+        width: 700px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 1px;
+        width: 90%;
+        color: white;
+        border-style: outset;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #3268ccb9; 
+        background-color: #3975e4b9; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); 
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .button:hover{
+        width: 100%;
+      }
+      
+      .reservation-form{
+        display:flex;
+        flex-direction: column;
+        max-width: 300px;
+        margin: 0 auto;
+        font-family: 'Roboto', sans-serif;
+        color: #3975e4b9;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); 
+      }
+
+      .reservation-label{
+        margin-bottom: 1px;
+      }
+
+      .reservation-input{
+        width: 100%;
+        padding: 10px; 
+        margin-bottom: 1px;
+        box-sizing: border-box;
+      }
+    </style>
+  </head>
+  <body>
+        <header>
+          <h2 style="color: white">Hill Air Force Base FamCamp</h2>
+          <p style="color: white">Log In</p>
+        </header>
+
+        <div class="sidebar">
+          <ul style="list-style-type: none; padding: 0; margin: 0;">
+            <li><button class="button" onclick="window.location.href='/'">Return to Homepage</button></li>
+            <li><button class="button" onclick="window.location.href='/map'">Go to Map</button></li>
+            <li><button class="button" onclick="window.location.href='/guestdash'">Go to Guest Dashboard</button></li>
+            <li><button class="button" onclick="window.location.href='/makereservation'">Go to Make Reservation</button></li>
+            <li><button class="button" onclick="window.location.href='/staffdash'">Go to Staff Dash</button></li>
+          </ul>
+        </div>
+
+        <div class="content">
+          <div>
+            <form class="reservation-form" onSubmit="return checkUser(event);" method="post">
+              <label for="username" class="reservation-label">Username:</label>
+              <input type="text" id="username" name="username" class="reservation-input" placeholder="Enter your username">
+          
+              <!-- <label for="password" class="reservation-label">Password:</label>
+              <input type="password" id="password" name="password" class="reservation-input" placeholder="Enter your password"> -->
+          
+              <input type="submit" class="button" value="Next">
+            </form>
+            <div>
+              <br>
+              <p id="message" class="text-danger" style="height:25px"><%- locals.message %></p>
+            </div>
+            <p class="text-center mt-5">Don't have an account?
+              <span class="text-primary"><a href="/register">Sign Up</a></span>
+            </p>
+          </div>
+      </div>
+    </body>
+  </body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enter Login</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+  <script>
+    function checkUser(event) {
+      username = document.getElementById("username").value;
+      if (username == "") {
+        document.getElementById("message").innerHTML = "Please enter a username";
+        event.preventDefault();
+      }
+    }
+  </script>
+
+</head>
+
+<body>
+  <div class="container-fluid vh-100" style="margin-top:10px">
+    <div class="" style="margin-top:100px">
+      <div class="rounded d-flex justify-content-center">
+        <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+          <div class="text-center">
+            <h3 class="text-primary">Sign In</h3>
+          </div>
+          <form onSubmit="return checkUser(event);" method="post">
+            <div class="p-4">
+              <div class="input-group mb-3">
+                <span class="input-group-text bg-primary">
+                  <i class="bi bi-person-plus-fill text-white"></i>
+                </span>
+                <input id="username" name="username" type="text" class="form-control" autofocus="autofocus" placeholder="Username">
+              </div>
+              <div>
+                <p id="message" class="text-danger">
+                  <%- locals.message %>
+                </p>
+              </div>
+              <div class="text-center">
+                <button class="btn btn-primary mt-2" type="submit">
+                  Next
+                </button>
+              </div>
+              <p class="text-center mt-5">Don't have an account?
+                <span class="text-primary"><a href="/register">Sign Up</a></span>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html> -->

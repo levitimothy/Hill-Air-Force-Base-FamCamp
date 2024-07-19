@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Homepage</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <style>
+
+      body {
+        margin: 0; 
+        margin-left: 400px;
+        margin-right: -400px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background: 
+          linear-gradient(to top, #ffffff, rgba(0,0,0,0)),
+          url('https://wallpapers.com/images/featured/sky-mvehfqz6w2ges2dj.jpg'); 
+        
+        height: 100vh;
+        padding: 0px; 
+      }
+      
+      header {
+        position: absolute;
+        padding: 20px;  
+        width: 1000px;
+        margin-top: 10px;
+        border-style: outset;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #3268ccb9; 
+        background-color: #3975e4b9; 
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .sidebar {
+        position: absolute; 
+        height: 100%; 
+        width: 250px; 
+        justify-content: center; 
+        align-items: center; 
+        color: white;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); 
+        margin-top: 150px;
+      }
+
+      .content {
+        position: absolute;
+        justify-content: right; 
+        align-items: center; 
+        margin-top: 150px;
+        margin-left: 300px;
+        backdrop-filter: blur(5px);
+        background-color: rgba(26, 26, 26, 0.877); 
+        padding: 15px;
+        width: 700px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.55);
+        font-family: 'Roboto', sans-serif;
+        color: #ffffff;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+      }
+
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 1px;
+        width: 90%;
+        color: white;
+        border-style: outset;
+        border-radius: 5px;
+        border-width: 2px;
+        border-color: #3268ccb9; 
+        background-color: #3975e4b9; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); 
+        font-family: 'Roboto', sans-serif;
+      }
+
+      .button:hover{
+        width: 100%;
+      }
+
+      table{
+        border-collapse: collapse;
+      }
+
+      td {
+        width: 325px;
+        height: 60px; 
+        padding: 1px;
+        padding-right: 3px;
+        /* border: 1px solid black; */
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+        <header>
+          <h2 style="color: white">Hill Air Force Base FamCamp</h2>
+          <p style="color: white">Staff Dashboard</p>
+        </header>
+
+        <div class="sidebar">
+          <ul style="list-style-type: none; padding: 0; margin: 0;">
+            <li><button class="button" onclick="window.location.href='/'">Return to Homepage</button></li>
+            <li><button class="button" onclick="window.location.href='/map'">Go to Map</button></li>
+            <li><button class="button" onclick="window.location.href='/guestdash'">Go to Guest Dashboard</button></li>
+            <li><button class="button" onclick="window.location.href='/makereservation'">Go to Make Reservation</button></li>
+            <li><button class="button" onclick="window.location.href='/userlogin'">Go to User Login</button></li>
+          </ul>
+        </div>
+
+        <div class="content">
+          <div>
+            <!-- <img style="width: 700px;" src="https://oyster.ignimgs.com/mediawiki/apis.ign.com/crash-bandicoot-warped/6/65/WarpHub_Pic01.jpg"></img>-->
+          </div>
+
+          <div>
+            <table>
+                <tr>
+                    <td><h3>Reservations</h3></td>
+                    <td><h3>Accounts</h3></td>
+                    <td><h4>Logged In: <%- locals.session.username %></h4></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="window.location.href='/makereservation'">Make Reservation</button></td>
+                    <td><button class="button" onclick="window.location.href='/makereservation'">Update Personal Info</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="window.location.href='/makereservation'">Update Reservation</button></td>
+                    <td><button class="button" onclick="window.location.href='/makereservation'">Passwords</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="window.location.href='/available'">Available Sites Today</button></td>
+                    <td><button class="button" onclick="window.location.href='/makereservation'">View Staff</button></td>
+                </tr>
+                <tr>
+                  <td><button class="button" onclick="window.location.href='/restoday'">Sites In Use Today</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="window.location.href='/reshistory'">Reservation History</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="window.location.href='/makereservation'">Take Payment</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" onclick="window.location.href='/makereservation'">View Guest</button></td>
+                </tr>
+                <tr>
+                  <td><button class="button" onclick="window.location.href='/logout'">Logout</button></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+    </body>
+  </body>
+</html>
